@@ -5,6 +5,10 @@ import sys
 
 from bs4 import BeautifulSoup as bs
 
+if len(sys.argv) != 2 :
+    print("Example usage: python " + sys.argv[0] + " public.csv")
+    sys.exit()
+
 request = requests.get('https://politiken.dk/indland/art7082537/S%C3%A5dan-er-karaktergennemsnittet-p%C3%A5-landets-fri-og-privatskoler')
 
 content = request.content

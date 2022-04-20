@@ -5,7 +5,10 @@ import sys
 
 from bs4 import BeautifulSoup as bs
 
-request = requests.get(str(sys.argv[1]))
+if len(sys.argv) != 2 :
+    print("Example usage: python " + sys.argv[0] + " public.csv")
+    sys.exit()
+request = requests.get('https://politiken.dk/indland/art7082486/S%C3%A5dan-er-karakter%C2%ADgennemsnittet-p%C3%A5-landets-folkeskoler')
 
 content = request.content
 
@@ -15,7 +18,7 @@ table = soup.findChildren('table')[1]
 
 rows = table.findChildren('tr')
 
-f = open(str(sys.argv[2]), "w")
+f = open(str(sys.argv[1]), "w")
 f.write("name;location\n")
 for row in rows:
   cells = row.findChildren('td')
